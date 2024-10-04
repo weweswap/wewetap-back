@@ -8,7 +8,7 @@ import { SettingsDto } from './dto/settings.dto';
 export class SettingsController {
   constructor(private settingsService: SettingsService) {}
 
-  @ApiOperation({ summary: 'Получение настроек' })
+  @ApiOperation({ summary: 'Get settings' })
   @ApiResponse({
     status: 200,
     description: 'Returns the application settings',

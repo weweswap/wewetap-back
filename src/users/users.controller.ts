@@ -19,28 +19,28 @@ import { ApiGuard } from '../guards/api/api.guard';
 export class UsersController {
   constructor(private userService: UsersService) {}
 
-  @ApiOperation({ summary: 'Создание User' })
+  @ApiOperation({ summary: 'Create User' })
   @Post('auth')
   createUser(@Body() dto: AuthUserDto) {
     return this.userService.createUser(dto);
   }
 
   @UseGuards(ApiGuard)
-  @ApiOperation({ summary: 'Получение User' })
+  @ApiOperation({ summary: 'Get User' })
   @HttpCode(200)
   @Get('all')
   getAll(@Query('skip') skip: number = 0, @Query('take') take: number = 10) {
     return this.userService.getAll(skip, take);
   }
 
-  @ApiOperation({ summary: 'Изменение кошелька' })
+  @ApiOperation({ summary: 'Change wallet' })
   @HttpCode(200)
   @Post('/wallet')
   updateUserWallet(@Body('wallet_address') wallet: string, @Req() reg) {
     return this.userService.updateUserWallet(wallet, reg);
   }
 
-  @ApiOperation({ summary: 'Получение рефералов' })
+  @ApiOperation({ summary: 'get ref' })
   @HttpCode(200)
   @Post('/asgardians')
   getUserReferals(
@@ -51,21 +51,21 @@ export class UsersController {
     return this.userService.getUserReferals(req, skip, take);
   }
 
-  @ApiOperation({ summary: 'Клейм' })
+  @ApiOperation({ summary: 'Claim' })
   @Post('/claim')
   @HttpCode(200)
   claimCoins(@Req() req) {
     return this.userService.claimCoins(req);
   }
 
-  @ApiOperation({ summary: 'Клейм родителя' })
+  @ApiOperation({ summary: 'Parent Claim' })
   @Post('/asgardiansclaim')
   @HttpCode(200)
   claimParentCoins(@Req() req) {
     return this.userService.claimAsgardianCoins(req);
   }
 
-  @ApiOperation({ summary: 'Потыкать реферала ' })
+  @ApiOperation({ summary: 'Kick ref ' })
   @Post('/kick')
   @HttpCode(200)
   kickUser(@Req() req, @Body('id') user_id: string) {
