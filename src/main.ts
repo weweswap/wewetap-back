@@ -9,7 +9,6 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('WeTap Api')
-    .setDescription('А что пишут в документации ?')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

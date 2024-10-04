@@ -21,7 +21,7 @@ export class TaskController {
   constructor(private taskService: TaskService) {}
 
   @UseGuards(ApiGuard)
-  @ApiOperation({ summary: 'Создание Task' })
+  @ApiOperation({ summary: 'Create Task' })
   @ApiResponse({ status: 200, type: Task })
   @Post('create')
   create(@Body() dto: CreateTaskDto) {
@@ -29,7 +29,7 @@ export class TaskController {
   }
 
   @UseGuards(ApiGuard)
-  @ApiOperation({ summary: 'Создание множества Task ' })
+  @ApiOperation({ summary: 'Create many Task ' })
   @ApiResponse({ status: 200, type: [Task] })
   @Post('createMany')
   createMany(@Body() dto: CreateTaskDto[]) {
