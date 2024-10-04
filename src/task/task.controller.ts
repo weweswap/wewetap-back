@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TaskService } from './task.service';
-import { ApiBody, ApiHeader, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiHeader, ApiOperation, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Task } from './task.model';
 import { RemoveTaskDto } from './dto/remove-task.dto';
 import { ApiGuard } from '../guards/api/api.guard';
@@ -21,9 +21,11 @@ export class TaskController {
   constructor(private taskService: TaskService) {}
 
   @UseGuards(ApiGuard)
-  @ApiHeader({
+  @ApiQuery({
     name: 'apikey',
     description: 'apikey',
+    required: false,
+    type: String,
   })
   @ApiOperation({ summary: 'Create Task' })
   @ApiResponse({ status: 200, type: Task })
@@ -34,9 +36,11 @@ export class TaskController {
   }
 
   @UseGuards(ApiGuard)
-  @ApiHeader({
+  @ApiQuery({
     name: 'apikey',
     description: 'apikey',
+    required: false,
+    type: String,
   })
   @ApiOperation({ summary: 'Create many Task ' })
   @ApiResponse({ status: 200, type: [Task] })
@@ -75,9 +79,11 @@ export class TaskController {
 
   @Post('remove')
   @UseGuards(ApiGuard)
-  @ApiHeader({
+  @ApiQuery({
     name: 'apikey',
     description: 'apikey',
+    required: false,
+    type: String,
   })
   @HttpCode(200)
   @ApiBody({ type: RemoveTaskDto })
