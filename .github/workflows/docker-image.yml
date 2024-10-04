@@ -19,6 +19,7 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         password: ${{ secrets.REMOTE_USER_PASSWORD }}
+        strict: false
         key: ${{ secrets.SSH_PRIVATE_KEY}}
         port: ${{ secrets.REMOTE_SERVER_PORT }}
         script: |
