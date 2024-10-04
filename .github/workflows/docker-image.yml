@@ -16,7 +16,7 @@ jobs:
     - name: SSH into remote server
       uses: appleboy/ssh-action@v1.0.3
       with:
-          host: ${{ secrets.REMOTE_SERVER_HOST }}
+          host: ${{ secrets.REMOTE_HOST }}
           port: ${{ secrets.REMOTE_SERVER_PORT }}
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_USER_PASSWORD }}
