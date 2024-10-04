@@ -21,6 +21,7 @@ jobs:
         password: ${{ secrets.REMOTE_USER_PASSWORD }}
         strict: false
         key: ${{ secrets.SSH_PRIVATE_KEY}}
+        passphrase: ${{secrets.SSH_PASSPHRASE}}
         port: ${{ secrets.REMOTE_SERVER_PORT }}
         script: |
           cd /home/referral/wewetap-back
