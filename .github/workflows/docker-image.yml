@@ -26,6 +26,6 @@ jobs:
         script: |
           cd /home/referral/wewetap-back
           git pull origin main
-          sudo docker-compose down
-          sudo docker-compose pull  # Обновление образов
-          sudo docker-compose up -d --build  # Перезапуск контейнеров
+          docker-compose down
+          docker-compose pull  # Обновление образов
+          docker-compose up -d --build  # Перезапуск контейнеров
