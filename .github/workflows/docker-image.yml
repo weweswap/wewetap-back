@@ -16,18 +16,13 @@ jobs:
     - name: SSH into remote server
       uses: appleboy/ssh-action@v1.0.3
       with:
-          host: ${{ secrets.REMOTE_HOST }}
-          port: ${{ secrets.REMOTE_SERVER_PORT }}
-          username: ${{ secrets.REMOTE_USER }}
-          password: ${{ secrets.REMOTE_USER_PASSWORD }}
-
-
-    - name: Build and Deploy on Remote Server
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} << 'EOF'
-          cd /var/weTap
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        password: ${{ secrets.REMOTE_USER_PASSWORD }}
+        port: ${{ secrets.REMOTE_SERVER_PORT }}
+        script: |
+          cd /home/referral/wewetap-back
           git pull origin master
           docker-compose down
           docker-compose pull  # Обновление образов
           docker-compose up -d --build  # Перезапуск контейнеров
-        EOF
