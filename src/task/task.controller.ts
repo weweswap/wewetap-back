@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TaskService } from './task.service';
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiHeader, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Task } from './task.model';
 import { RemoveTaskDto } from './dto/remove-task.dto';
 import { ApiGuard } from '../guards/api/api.guard';
@@ -21,14 +21,23 @@ export class TaskController {
   constructor(private taskService: TaskService) {}
 
   @UseGuards(ApiGuard)
+  @ApiHeader({
+    name: 'apikey',
+    description: 'apikey',
+  })
   @ApiOperation({ summary: 'Create Task' })
   @ApiResponse({ status: 200, type: Task })
+
   @Post('create')
   create(@Body() dto: CreateTaskDto) {
     return this.taskService.createTask(dto);
   }
 
   @UseGuards(ApiGuard)
+  @ApiHeader({
+    name: 'apikey',
+    description: 'apikey',
+  })
   @ApiOperation({ summary: 'Create many Task ' })
   @ApiResponse({ status: 200, type: [Task] })
   @Post('createMany')
@@ -66,6 +75,10 @@ export class TaskController {
 
   @Post('remove')
   @UseGuards(ApiGuard)
+  @ApiHeader({
+    name: 'apikey',
+    description: 'apikey',
+  })
   @HttpCode(200)
   @ApiBody({ type: RemoveTaskDto })
   removeTask(@Body() removeTaskDto: RemoveTaskDto, @Req() req) {

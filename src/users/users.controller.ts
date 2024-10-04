@@ -9,7 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiOperation, ApiTags } from "@nestjs/swagger";
 
 import { AuthUserDto } from '../auth/dto/auth-user.dto';
 import { ApiGuard } from '../guards/api/api.guard';
@@ -26,6 +26,10 @@ export class UsersController {
   }
 
   @UseGuards(ApiGuard)
+  @ApiHeader({
+    name: 'apikey',
+    description: 'apikey',
+  })
   @ApiOperation({ summary: 'Get User' })
   @HttpCode(200)
   @Get('all')
