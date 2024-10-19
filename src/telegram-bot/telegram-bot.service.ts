@@ -24,11 +24,9 @@ export class TelegramBotService implements OnModuleInit {
           this.onStart(chatId);
           break;
         default:
-          this.bot.sendMessage(chatId, `Вы написали: ${text}`);
+          this.onStart(chatId);
           break;
       }
-
-      // Обработайте текст и отправьте ответ
     });
   }
 
@@ -69,7 +67,7 @@ export class TelegramBotService implements OnModuleInit {
     return this.bot.sendMessage(chatId, message, options);
   }
 
-  //TODO вынести в отделное мб
+
   sendAssgariansClaimMessage(chatId: string, username: string) {
     const randomIndex = Math.floor(Math.random() * asgr_phrases.length);
     const randomWord = asgr_phrases[randomIndex];

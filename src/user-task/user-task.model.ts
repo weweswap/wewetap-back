@@ -43,7 +43,6 @@ export class UserTaskModel extends Model<UserTaskModel> {
   @Column({ allowNull: false })
   task_id: string;
 
-  // Добавляем ассоциации с User и Task
   @BelongsTo(() => User)
   user: User;
 
