@@ -3,7 +3,7 @@ name: Deploy to Remote Server
 on:
   push:
     branches:
-      - main  # или укажите ветку, на которую хотите реагировать
+      - main
 
 jobs:
   deploy:
@@ -27,5 +27,5 @@ jobs:
           cd /home/referral/wewetap-back
           git pull origin main
           docker-compose down
-          docker-compose pull  # Обновление образов
-          docker-compose up -d --build  # Перезапуск контейнеров
+          docker-compose pull  
+          docker-compose up -d --build 
